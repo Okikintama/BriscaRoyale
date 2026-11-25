@@ -47,7 +47,7 @@ html,body{margin:0;height:100%;background:#121214;overflow:hidden;font-family:'P
 .tile{width:92px;height:122px;border-radius:9px;position:relative;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(0,0,0,.45);border:3px solid rgba(0,0,0,.4);transition:transform .12s;flex:none}
 .tile:hover{transform:translateY(-5px)}
 .tile .ic{font-size:40px;line-height:1;filter:drop-shadow(0 3px 0 rgba(0,0,0,.35))}
-.tile .nm{font-size:12px;text-align:center;margin-top:8px;line-height:1.05;padding:0 4px;font-weight:700}
+.tile .nm{font-size:14px;text-align:center;margin-top:8px;line-height:1.05;padding:0 4px;font-weight:700}
 .tile.r1{background:linear-gradient(#85C2D0,#5f99a6);color:#1a1315}.tile.r2{background:linear-gradient(#989FC0,#6d7396);color:#1a1315}.tile.r3{background:linear-gradient(#FA49B0,#b82a7c)}
 .tile.ref{background:linear-gradient(#F7AB80,#c97d52);color:#2a1410}
 .tile.pack{background:linear-gradient(#6F2C24,#4a1a14);color:#EEE5E0}
@@ -55,13 +55,24 @@ html,body{margin:0;height:100%;background:#121214;overflow:hidden;font-family:'P
 .tile.selc{outline:4px solid #EEE5E0}
 .tile.jig{animation:jig .35s}
 @keyframes jig{0%,100%{transform:none}30%{transform:rotate(-8deg) scale(1.12)}60%{transform:rotate(6deg) scale(1.08)}}
+.px{width:56px;height:56px;image-rendering:pixelated;display:block}
+.tile.mini .px{width:28px;height:28px}
+.chip .px{width:56px;height:56px}
+.btn.pulse{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 5px 0 #4e7f8a,0 0 0 0 rgba(133,194,208,.0)}50%{box-shadow:0 5px 0 #4e7f8a,0 0 22px 6px rgba(133,194,208,.85);transform:translateY(-2px)}}
+.banner{position:absolute;left:408px;top:290px;transform:translate(-50%,-50%);z-index:58;pointer-events:none;padding:12px 14px;border-radius:12px;font-size:25px;font-weight:700;width:180px;line-height:1.15;box-shadow:0 6px 0 rgba(0,0,0,.5);animation:bnr 1.6s ease-out forwards;text-align:center}
+.banner .sub{font-size:18px;margin-top:6px;font-weight:400}
+@keyframes bnr{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}12%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}20%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0}}
+.card.win{box-shadow:0 0 0 4px #85C2D0,0 0 26px 8px rgba(133,194,208,.8)!important}
+.card.lose{box-shadow:0 0 0 4px #FA49B0,0 0 26px 8px rgba(250,73,176,.7)!important}
+.bar{height:12px;background:#0e0a0c;border-radius:6px;overflow:hidden;margin-top:6px}.bar>div{height:100%;background:#85C2D0;transition:width .3s}
 .tile.mini{width:44px;height:58px;border-radius:6px}.tile.mini .ic{font-size:22px}.tile.mini .nm{display:none}
-.tt{display:none;position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);width:200px;background:#EEE5E0;color:#2a1416;border-radius:8px;padding:8px 10px;font-size:15px;z-index:40;box-shadow:0 4px 0 rgba(0,0,0,.5);text-align:center;font-weight:400;pointer-events:none}
-.tt b{display:block;font-size:16px;margin-bottom:3px}
+.tt{display:none;position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);width:230px;background:#EEE5E0;color:#2a1416;border-radius:8px;padding:9px 11px;font-size:18px;z-index:40;box-shadow:0 4px 0 rgba(0,0,0,.5);text-align:center;font-weight:400;pointer-events:none}
+.tt b{display:block;font-size:19px;margin-bottom:3px}
 .tip:hover .tt{display:block}
 .tt.up{top:auto;bottom:calc(100% + 8px)}
 .price{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#F7AB80;color:#2a1410;border-radius:6px;padding:1px 8px;font-weight:700;font-size:15px;box-shadow:0 3px 0 #a8623c}
-.lbl{font-size:13px;color:#989FC0;text-transform:uppercase;letter-spacing:1px}
+.lbl{font-size:15px;color:#989FC0;text-transform:uppercase;letter-spacing:1px}
 .big{font-size:34px;font-weight:700}
 .chips{background:#85C2D0;color:#1a1315;border-radius:8px;padding:4px 10px;font-size:30px;font-weight:700;min-width:80px;text-align:right;box-shadow:0 4px 0 #4e7f8a}
 .mult{background:#FA49B0;border-radius:8px;padding:4px 10px;font-size:30px;font-weight:700;min-width:80px;text-align:left;box-shadow:0 4px 0 #9a2468}
@@ -80,7 +91,7 @@ input.code{font-family:inherit;font-size:30px;width:220px;text-align:center;bord
 .rival{width:250px;height:420px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px;box-sizing:border-box}
 .rival.done{opacity:.45}.rival.cur{transform:translateY(-10px);border-color:#F7AB80}
 .chip{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;text-align:center;border:5px dashed rgba(255,255,255,.4);box-shadow:0 5px 0 rgba(0,0,0,.4)}
-.small{font-size:14px}
+.small{font-size:17px}
 .gold{color:#F7AB80}
 .red{color:#FA49B0}
 .muted{color:#989FC0}
@@ -254,7 +265,7 @@ const EN={
 'Apuesta':'Stake','Semilla (opcional):':'Seed (optional):','Volver':'Back','¡A jugar!':"Let's play!",
 'Dificultad':'Difficulty','Fácil':'Easy','Difícil':'Hard','Música':'Music','Apagada':'Off','Baja':'Low','Media':'Medium','Alta':'High','Efectos de sonido':'Sound effects','Sí':'Yes','Idioma':'Language',
 'Metas más bajas y el rival juega peor. Cambia en el próximo rival.':'Lower targets and a weaker rival. Takes effect next rival.','Metas y rival normales. Cambia en el próximo rival.':'Normal targets and rival. Takes effect next rival.','Metas más altas, rival listo y Jefes con 2 reglas. Cambia en el próximo rival.':'Higher targets, a smart rival and Bosses with 2 rules. Takes effect next rival.',
-'Duelo':'Duel','Brisca de verdad, 1 contra 1. Cada jugador tiene sus Comodines. Gana la ronda quien haga más Puntos × Fuego. Primero en ganar 3 rondas gana el duelo.':'Real Brisca, 1 vs 1. Each player has their own Wildcards. Most Points × Fire wins the round. First to win 3 rounds wins the duel.','En esta computadora':'On this computer','En línea (con código)':'Online (with code)',
+'Duelo':'Duel','¡Ganaste la baza!':'You won the trick!','Tus puntos':'Your points','Puntos de esta baza':'This trick','Última baza ganada':'Last trick won','Gana bazas para sumar puntos':'Win tricks to score points','Toca una carta para elegirla':'Tap a card to pick it','Pulsa Jugar o toca la carta otra vez':'Press Play or tap the card again','Brisca de verdad, 1 contra 1. Cada jugador tiene sus Comodines. Gana la ronda quien haga más Puntos × Fuego. Primero en ganar 3 rondas gana el duelo.':'Real Brisca, 1 vs 1. Each player has their own Wildcards. Most Points × Fire wins the round. First to win 3 rounds wins the duel.','En esta computadora':'On this computer','En línea (con código)':'Online (with code)',
 'Esperando al anfitrión...':'Waiting for the host...','Pasa la computadora a':'Pass the computer to','El otro jugador no debe mirar.':'The other player should not look.','Ver mi mano':'See my hand','Rondas ganadas':'Rounds won','Puntos de ronda':'Round points','Salir':'Quit','Comodines del rival':"Rival's Wildcards",'Ninguno':'None','Mano rival':"Rival's hand",'Mazo':'Deck','¡Tu turno!':'Your turn!','¡Empate!':"It's a tie!",'¡Ganaste la ronda!':'You won the round!','Vender tus Comodines':'Sell your Wildcards','Nada que vender':'Nothing to sell','¡Listo! ▶':'Ready! ▶','¡Ganaste el duelo!':'You won the duel!','Perdiste el duelo':'You lost the duel','Volver al menú':'Back to menu',
 'Duelo en línea':'Online Duel','Cada jugador en su propia computadora. El código solo sirve para este duelo y expira al terminar.':'Each player on their own computer. The code only works for this duel and expires when it ends.','Tu código':'Your code','Esperando rival...':'Waiting for rival...','Cancelar':'Cancel','Crear partida':'Create game','o únete con un código':'or join with a code','Unirse':'Join','Se necesita internet.':'Internet required.','Conectando...':'Connecting...','No se pudo conectar. ¿Tienes internet?':"Couldn't connect. Are you online?",'Escribe el código completo (BRISCA-XXXX)':'Type the full code (BRISCA-XXXX)','Buscando partida...':'Looking for game...','Código no válido o expirado':'Invalid or expired code',
 'No hay espacio para Comodines':'No room for Wildcards','El rival gana la baza':'The rival wins the trick','No quedan cartas en tu baraja':'No cards left in your deck','Usa los Refranes durante una ronda':'Use Sayings during a round','Elige 1 carta de tu mano':'Pick 1 card from your hand','Esa carta es prestada':'That card is borrowed','¡Ahora es un 3!':"It's a 3 now!",'Elige 1 carta de 0 puntos':'Pick 1 zero-point card','El rival no ha ganado ninguna baza':"The rival hasn't won any tricks",'¡Ojo por ojo!':'An eye for an eye!','Elige 1 o 2 cartas':'Pick 1 or 2 cards','¡4 cartas y +1 Mano!':'4 cards and +1 Hand!','Ves la mano del rival':"You can see the rival's hand",'Carta destruida. +$5':'Card destroyed. +$5','Toca 1 Comodín primero':'Tap 1 Wildcard first','No tienes suficiente dinero':'Not enough money','No hay espacio para más Comodines':'No room for more Wildcards','No hay espacio para más Refranes':'No room for more Sayings','No hay espacio. Vende un Comodín primero':'No room. Sell a Wildcard first','Se perdió la conexión con el rival':'Lost connection to the rival',
@@ -262,6 +273,7 @@ const EN={
 const tr=s=>{if(SET.lang!=='en')return s;return trx(s)};
 const ENRX=[
 [/^(As|2|3|4|5|6|7|Sota|Caballo|Rey) de (Oros|Copas|Espadas|Bastos)$/,(m,a,b)=>trx(a)+' of '+trx(b)],
+[/^= ([\d.,]+) puntos$/,'= $1 points'],[/^\+([\d.,]+) puntos$/,'+$1 points'],[/^(\d+) puntos de Brisca para el rival$/,'$1 Brisca points for the rival'],[/^(\d+) puntos de Brisca$/,'$1 Brisca points'],[/^(.+) gana la baza$/,(m,a)=>trx(a)+' wins the trick'],
 [/^(\d+) puntos$/,(m,a)=>a+(a==='1'?' point':' points')],
 [/^Sello (\S+): (.+)$/,(m,a,b)=>trx(a)+' Seal: '+trx(b)],
 [/^Premio: (\$+)$/,'Reward: $1'],
@@ -378,7 +390,12 @@ function sched(){
 function music(mode){if(AU.mode!==mode){AU.mode=mode}}
 function sfx(k,v=0){
   const C=AU.ctx;if(!C||!SET.sfx)return;const t=C.currentTime;
-  if(k==='card'){const b=C.createBuffer(1,C.sampleRate*0.08,C.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);const s=C.createBufferSource();s.buffer=b;const f=C.createBiquadFilter();f.type='bandpass';f.frequency.value=2200;const g=C.createGain();g.gain.value=0.6;s.connect(f);f.connect(g);g.connect(AU.sfx);s.start(t)}
+  if(k==='card'){const g=C.createGain(),f=C.createBiquadFilter(),wet=C.createGain();f.type='lowpass';f.frequency.value=900;wet.gain.value=0.9;
+    const n=[38,45,43,41][Math.floor(Math.random()*4)];
+    [['sine',0,0.22],['triangle',12,0.06],['sawtooth',0,0.025]].forEach(([ty,o,v])=>{const os=C.createOscillator();os.type=ty;os.frequency.setValueAtTime(mf(n+o)*1.5,t);os.frequency.exponentialRampToValueAtTime(mf(n+o),t+0.06);const og=C.createGain();og.gain.setValueAtTime(0.0001,t);og.gain.exponentialRampToValueAtTime(v,t+0.01);og.gain.exponentialRampToValueAtTime(0.0001,t+0.7);os.connect(og);og.connect(f);os.start(t);os.stop(t+0.8)});
+    f.connect(g);g.gain.value=0.9;g.connect(AU.sfx);f.connect(wet);wet.connect(AU.rev);return}
+  if(k==='sel'){osc('sine',mf(74+Math.floor(Math.random()*3)*3),t,0.01,0.025,AU.sfx,{r:0.12,wob:false});return}
+  if(k==='oldcard'){const b=C.createBuffer(1,C.sampleRate*0.08,C.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);const s=C.createBufferSource();s.buffer=b;const f=C.createBiquadFilter();f.type='bandpass';f.frequency.value=2200;const g=C.createGain();g.gain.value=0.6;s.connect(f);f.connect(g);g.connect(AU.sfx);s.start(t)}
   else if(k==='tick')osc('square',380*Math.pow(2,Math.min(v,30)/12),t,0.02,0.06,AU.sfx,{r:0.07,wob:false});
   else if(k==='mult')osc('sawtooth',260*Math.pow(2,Math.min(v,24)/12),t,0.03,0.07,AU.sfx,{r:0.12,wob:false,cut:2000});
   else if(k==='coin'){osc('square',988,t,0.02,0.05,AU.sfx,{r:0.06,wob:false});osc('square',1319,t+0.07,0.02,0.05,AU.sfx,{r:0.25,wob:false})}
@@ -416,13 +433,83 @@ function bgFrame(ts){
   bgx.putImageData(bgi,0,0);
 }
 
+/* ---------- hand-made pixel sprites (card style) ---------- */
+const SPC={k:'#1a1315',w:'#fff6e0',y:'#f2c23a',o:'#b07a1a',r:'#d8333a',R:'#8a1d22',b:'#3a6fd8',l:'#9ec4f0',g:'#3fae52',G:'#1e6b33',n:'#8a5a2a',N:'#5a3416',s:'#f0c090',a:'#a8adb5',A:'#5a6068',P:'#7a4a9a'};
+const SPR={
+'🐓':['.....RR','....RRR','....www','...ywkw','....www.....g','...wwww...ggG','..wwrwwwwwgG','..wwwwwwwwg','...wwwwwww','.....y..y','.....y..y','....yy.yy'],
+'👵':['.....aaa','....aaaaa','...aaaaaaa','...asssssa','...sksssks','...sssssss','...ssRRRss','....sssss','....bbbbb','...bbbbbbb','..bbbbwbbbb','..bbbbbbbbb'],
+'🗑️':['.....AAA','..AAAAAAAA','','...aAaAaAa','...aAaAaAa','...aAaAaAa','...aAaAaAa','...aAaAaAa','...aAaAaAa','....aaaaa'],
+'🍺':['...wwwwww','..wwwwwwww','..yyyyyyyy','..yoyyyyoyaa','..yyyyyyyy.a','..yoyyyyoy.a','..yyyyyyyy.a','..yoyyyyoyaa','..yyyyyyyy','..oooooooo'],
+'⛪':['......y','.....yyy','......y','.....RRR','....RRRRR','...RRRRRRR','...wwwwwww','...wwwnwww','...wwnnnww','...wwnnnww','...wwnnnww'],
+'💰':['.....n.n','......n','.....yyy','....yyyyy','...yyyyyyy','..yyyoooyyy','..yyoyyyyyy','..yyyoooyyy','..yyyyyoyyy','..yyoooyyyy','...yyyyyyy'],
+'⚔️':['.l........l','..l......l','...l....l','....l..l','.....ll','.....ll','....l..l','..yyo..oyy','...N....N','..N......N','.N........N'],
+'🪓':['...aaa','..aaaaa','..aaaaaNN','...aaa.N','......N','.....N','....N','...N','..N','.N'],
+'🧑':['....rrr','...rrrrr','....sss','....sks','....sss','...yyryy','..yyyryyy','..syyryys','...yyryy','...nn.nn','...nn.nn','..NNN.NNN'],
+'🐎':['......nn','.....nnnn','....nnknnn','...nnnnnnnN','..nnnnnnnnN','..Rnnnnnnn','...nn.nnnnN','.......nnnN','.......nnnN','......nnnnn'],
+'👑':['.y...y...y','.yy.yyy.yy','.yyyyyyyyy','.yyryybyyy','.yyyyyyyyy','.ooooooooo'],
+'🔥':['......r','.....rr','.....rrr..r','....rryrr.r','...rrryyrrr','...rryyyyrr','...ryyyyyyr','...ryywwyyr','...rryywyrr','....rrrrrr'],
+'🐸':['..gg....gg','.gwgg..ggwg','.gkgg..ggkg','.gggggggggg','gggggggggggg','gggRRRRRRggg','.gggggggggg','..gGgggGgg','.GG.gggg.GG'],
+'🏴‍☠️':['.nAAAAAAAA','.nAAAwwwAA','.nAAwkwkwA','.nAAwwwwwA','.nAAAwkwAA','.nAwAAAAAw','.nAAwAAAwA','.nAAAAAAAA','.n','.n','.n','.n'],
+'🌿':['..........g','........ggg','......gggGg','.....ggGggg','....gGgggg','...gGgggg','...Gggg','..Ggg','.G','G'],
+'🌾':['.....yyyy','....yyyyyy','....RRRRRR','yyyyyyyyyyyy','.yyoyyoyyoy','...ssssss','...sksssks','...ssssss','....sRRs','...bbbbbb','..bbbbbbbb'],
+'👹':['y...y...y','yy.yyy.yy','.rrrrrrrr','rrkkrrkkrr','rrkyrrkyrr','rrrrrrrrrr','rrwkwkwkrr','.rrwkwkwrr','..rrrrrr'],
+'🎩':['...AAAAAA','...AAAAAA','...AAAAAA','...AAAAAA','...RRRRRR','...AAAAAA','.AAAAAAAAAA'],
+'🕯️':['......y','.....yry','.....yry','......k','....wwwww','....wwwww','....wwwww','....wwwww','....wwwww','...ooooooo'],
+'🐦':['......bbb','.....bbkbb','....bbbbbby','...bbbbbb','..bbbbbbb','.bbbblbbb','..bbbbbb','....y..y'],
+'☀️':['y....y....y','.y...y...y','...yyyyy','..yyyyyyy','yyyyyyyyyyy','..yyyyyyy','...yyyyy','.y...y...y','y....y....y'],
+'👁️':['...wwwwww','.wwwwwwwwww','wwwwbbbbwwww','wwwbbkkbbwww','wwwbbkkbbwww','wwwwbbbbwwww','.wwwwwwwwww','...wwwwww'],
+'🐑':['...wwwww','..wwwwwwww','.wwwwwwwwww','AAwwwwwwwww','AkAwwwwwwww','.AAwwwwwwww','...A.A.A.A','...A.A.A.A'],
+'🌅':['.....yyy','....yyyyy','...yyyyyyy','gggyyyyyyggg','gggggggggggg','GgggGggggGgg','gggggggggggg'],
+'🦐':['..rr','.r..rrrr','r..rrrrrr','....rrkrrr','.......rrr','.....rrrr','...rrrr','..rr.r','.r'],
+'🌈':['...rrrrrr','.rryyyyyyrr','ryyggggggyyr','rygbbbbbbgyr','ygb......bgy','yb........by'],
+'👥':['.ss.....ss','.ss.....ss','bbbb...rrrr','bbbb...rrrr','bbbb...rrrr','.bb.....rr','.bb.....rr','.NN.....NN'],
+'🪑':['nnnnnnnnnnn','NNNNNNNNNNN','.n.......n','.n.......n','.n.......n','.n.......n','.N.......N'],
+'✋':['..s.s.s','..s.s.s.s','..s.s.s.s','..sssssss','s.sssssss','ssssssss','.sssssss','..sssss'],
+'♻️':['.wwwwww','.wwwwww..r','.wwyyww.rrr','.wyyyyw..r','.wwyyww..r','.wwwwww.rr','.wwwwww'],
+'🏷️':['.....yyyyy','....yyyyyy','...yyyyyyy','..yykyyyyy','...yyyyyyy','....yyyyyy','.....yyyyy'],
+'👝':['...nNNn','....nn','..nnnnnn','.nnnnnnnn','.nnnnynnn','.nnnnnnnn','..nnnnnn'],
+'🃏':['RRRRRRRR','RrrrrrrR','RrryyrrR','RryooyrR','RryooyrR','RrryyrrR','RrrrrrrR','RRRRRRRR'],
+'📜':['.oyyyyyyyo','.yyyyyyyyy','..yNNNNNy','..yyyyyyy','..yNNNNNy','..yyyyyyy','..yNNNNy','.oyyyyyyyo'],
+'🎴':['.wwwwwww','.wwwwwww','.wwyyyww','.wyyoyyw','.wwyyyww','.wwwwwww','.wwwwwww'],
+'❓':['...yyyy','..yy..yy','......yy','.....yy','....yy','....yy','','....yy'],
+'🧙':['......P','.....PP','....PPP','...PPPP','...PPPP','..PPPPPP','..yyyyyy','PPPPPPPPPP','..ssssss','..sksskss'],
+'🎖️':['..rr.bb','...rbb','....y','...yyy','..yyoyy','..yoyoy','..yyoyy','...yyy'],
+'✝️':['....yy','....yy','.yyyyyyyy','.yyyyyyyy','....yy','....yy','....yy','....yy','....yy'],
+'⛈️':['...aaaa','.aaaaaaa','aaaaaaaaaa','.aaaaaaaa','....yy','...yy','..yyyy','....y','...y'],
+'🪙':['...yyyy','..yyyyyy','.yyoooyyy','.yyoyyyyy','.yyoooyyy','.yyyyoyyy','.yyoooyyy','..yyyyyy','...yyyy'],
+'🔔':['....yy','...yyyy','..yyyyyy','..yyyyyy','..yyyyyy','.yyyyyyyy','yyyyyyyyyy','....oo'],
+};
+function sprURL(e){
+  const rows=SPR[e];if(!rows)return null;
+  const W=14,H=14,cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d');
+  const h=rows.length,w=Math.max(...rows.map(r=>r.length));const ox=Math.floor((W-w)/2),oy=Math.floor((H-h)/2);
+  const op=[];for(let y=0;y<H;y++)op.push(new Array(W).fill(0));
+  rows.forEach((r,y)=>[...r].forEach((ch,x)=>{if(SPC[ch]){op[y+oy][x+ox]=1;g.fillStyle=SPC[ch];g.fillRect(x+ox,y+oy,1,1)}}));
+  g.fillStyle='#1a1315';
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++){if(op[y][x])continue;if((x>0&&op[y][x-1])||(x<W-1&&op[y][x+1])||(y>0&&op[y-1][x])||(y<H-1&&op[y+1][x]))g.fillRect(x,y,1,1)}
+  return cv.toDataURL();
+}
+
+/* ---------- pixel icons ---------- */
+const PXC={};
+function px(e){
+  if(PXC[e])return `<img class="px" src="${PXC[e]}" alt="">`;
+  const su=sprURL(e);if(su){PXC[e]=su;return `<img class="px" src="${su}" alt="">`}
+  const N=20,cv=document.createElement('canvas');cv.width=N;cv.height=N;const g=cv.getContext('2d');
+  g.textAlign='center';g.textBaseline='middle';g.font='15px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';g.fillText(e,N/2,N/2+1);
+  const im=g.getImageData(0,0,N,N),d=im.data,op=new Uint8Array(N*N);
+  for(let i=0;i<N*N;i++){const a=d[i*4+3];if(a>110){op[i]=1;for(let k=0;k<3;k++)d[i*4+k]=Math.min(255,Math.round(d[i*4+k]/40)*40);d[i*4+3]=255}else d[i*4+3]=0}
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const i=y*N+x;if(op[i])continue;if((x>0&&op[i-1])||(x<N-1&&op[i+1])||(y>0&&op[i-N])||(y<N-1&&op[i+N])){d[i*4]=26;d[i*4+1]=19;d[i*4+2]=21;d[i*4+3]=255}}
+  g.putImageData(im,0,0);PXC[e]=cv.toDataURL();return `<img class="px" src="${PXC[e]}" alt="">`;
+}
+function banner(t,sub,bg,fg){const e=document.createElement('div');e.className='banner';e.style.background=bg;e.style.color=fg;e.innerHTML=t+(sub?`<div class="sub">${sub}</div>`:'');trNode(e);$('#stage').appendChild(e);setTimeout(()=>e.remove(),1700)}
 /* ---------- ui helpers ---------- */
 function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);$('#stage').style.transform=`scale(${s})`}
 addEventListener('resize',fit);
 function toast(t){const e=document.createElement('div');e.className='toast';e.innerHTML=t;trNode(e);const h=$('#toast');h.innerHTML='';h.appendChild(e);setTimeout(()=>{if(e.parentNode)e.remove()},2300)}
 function floatText(t,x,y,col='#fff'){const e=document.createElement('div');e.className='float';e.style.left=x+'px';e.style.top=y+'px';e.style.color=col;e.innerHTML=t;trNode(e);$('#stage').appendChild(e);setTimeout(()=>e.remove(),1200)}
 document.addEventListener('pointerdown',()=>audioInit());
-document.addEventListener('click',e=>{if(e.target.closest('.btn'))sfx('btn')});
+document.addEventListener('click',e=>{if(e.target.closest('.btn'))sfx('sel')});
 let UI={screen:'title',modal:null};
 function go(s){UI.screen=s;UI.modal=null;UI.menu=null;
   const m={title:'title',newrun:'title',coleccion:'title',options:'title',duelmenu:'title',lobby:'title',select:'play',play:'play',tienda:'tienda',over:'boss',win:'tienda',duel:'play'}[s]||'play';
@@ -432,8 +519,8 @@ function render(){
   const f={title:rTitle,newrun:rNewRun,select:rSelect,play:rPlay,tienda:rTienda,over:rOver,win:rWin,options:rOptions,coleccion:rColeccion,duelmenu:rDuelMenu,lobby:rLobby,duel:rDuel}[UI.screen];
   let h=f();if(UI.modal)h+=rModal();$('#ui').innerHTML=h;trNode($('#ui'));
 }
-function comTile(id,o={}){const c=COMD[id];return `<div class="tile tip r${c.r} ${o.mini?'mini':''} ${o.cls||''}" id="${o.domId||''}" ${o.click?`onclick="${o.click}"`:''}>${o.price!=null?`<div class="price">$${o.price}</div>`:''}<div class="ic">${c.ic}</div><div class="nm">${c.n}</div><div class="tt ${o.up?'up':''}"><b>${c.n}</b>${c.d}${o.sell!=null?`<br><span style="color:#8a5a00">Vender: $${o.sell}</span>`:''}</div></div>`}
-function refTile(id,o={}){const c=REFD[id];return `<div class="tile tip ref ${o.mini?'mini':''} ${o.cls||''}" ${o.click?`onclick="${o.click}"`:''}>${o.price!=null?`<div class="price">$${o.price}</div>`:''}<div class="ic">${c.ic}</div><div class="nm">${c.n}</div><div class="tt ${o.up?'up':''}"><b>${c.n}</b>${c.d}</div></div>`}
+function comTile(id,o={}){const c=COMD[id];return `<div class="tile tip r${c.r} ${o.mini?'mini':''} ${o.cls||''}" id="${o.domId||''}" ${o.click?`onclick="${o.click}"`:''}>${o.price!=null?`<div class="price">$${o.price}</div>`:''}<div class="ic">${px(c.ic)}</div><div class="nm">${c.n}</div><div class="tt ${o.up?'up':''}"><b>${c.n}</b>${c.d}${o.sell!=null?`<br><span style="color:#8a5a00">Vender: $${o.sell}</span>`:''}</div></div>`}
+function refTile(id,o={}){const c=REFD[id];return `<div class="tile tip ref ${o.mini?'mini':''} ${o.cls||''}" ${o.click?`onclick="${o.click}"`:''}>${o.price!=null?`<div class="price">$${o.price}</div>`:''}<div class="ic">${px(c.ic)}</div><div class="nm">${c.n}</div><div class="tt ${o.up?'up':''}"><b>${c.n}</b>${c.d}</div></div>`}
 
 /* ---------- RUN ---------- */
 let R=null,G=null;
@@ -525,8 +612,9 @@ function aiPick(hand,led,trump){
 }
 function selCard(id){
   if(!G||G.busy)return;const i=G.sel.indexOf(id);
+  if(i>=0&&G.sel.length===1){playSel();return}
   if(i>=0)G.sel.splice(i,1);else{G.sel.push(id);if(G.sel.length>2)G.sel.shift()}
-  sfx('card');render();
+  sfx('sel');render();
 }
 function playSel(){
   if(G.busy||G.sel.length!==1)return;
@@ -542,10 +630,12 @@ function resolveRun(){
   const folWins=beats(lead,fol,G.trump);const pWins=G.rlead?folWins:!folWins;
   G.manos--;G.trick++;
   const last=G.manos===0||(G.pd.length===0&&G.hand.length===0);
+  G.result=pWins?'p':'r';
   if(pWins){
     G.streak++;
     const sc=scoreTrick({mine:G.table.p,other:G.table.r,trump:G.trump,coms:R.coms,dup:G.dup,streak:G.streak,last});
-    animScore(sc,()=>{
+    render();banner('¡Ganaste la baza!',pts(G.table.p)+pts(G.table.r)+' puntos de Brisca','#85C2D0','#1a1315');
+    animScore(sc,()=>{G.lastSc={p:sc.p,f:fmtF(sc),t:sc.total};
       if(sc.m){R.money+=sc.m;floatText('+$'+sc.m,700,250,'#F7AB80');sfx('coin')}
       const c=G.table.p;
       if(c.sello==='cristal'&&Math.random()<0.25){const k=R.deck.indexOf(c);if(k>=0)R.deck.splice(k,1);toast('💥 ¡Se rompió tu '+cname(c)+' de Cristal!');sfx('glass')}
@@ -553,12 +643,12 @@ function resolveRun(){
     });
   }else{
     G.streak=0;G.rivalPts+=pts(G.table.p)+pts(G.table.r);G.lastRival={p:G.table.p,r:G.table.r};
-    floatText('El rival gana la baza',700,170,'#FA49B0');
+    render();banner('El rival gana la baza',(pts(G.table.p)+pts(G.table.r))+' puntos de Brisca para el rival','#FA49B0','#fff');
     if(G.tw.includes('avaro')&&R.money>0){R.money--;setTimeout(()=>floatText('−$1',700,210,'#FA49B0'),300)}
     G.leader='r';setTimeout(afterTrick,800);
   }
 }
-function afterTrick(){G.anim=null;drawUp();nextTurn()}
+function afterTrick(){G.anim=null;G.result=null;drawUp();nextTurn()}
 function swapOK(){
   if(!G.trumpCard||G.tw.includes('tahur')&&false)return false;
   const t=G.trumpCard;
@@ -574,7 +664,7 @@ function doSwap(){
 function discardSel(){
   if(G.busy||!G.sel.length||G.desc<=0)return;
   if(G.pd.length<G.sel.length){toast('No quedan cartas en tu baraja');return}
-  G.hand=G.hand.filter(c=>!G.sel.includes(c.id));G.sel=[];G.desc--;G.descUsed++;G.fresh={};drawUp();sfx('card');render();
+  G.hand=G.hand.filter(c=>!G.sel.includes(c.id));G.sel=[];G.desc--;G.descUsed++;G.fresh={};drawUp();sfx('sel');render();
 }
 function fmtF(x){return +(x.f*x.x).toFixed(1)}
 function scoreTrick(o){
@@ -595,7 +685,7 @@ function animScore(sc,cb){
     else{G.anim={p:sc.p,f:fmtF(sc)};updAnim();
       setTimeout(()=>{floatText('+'+fmt(sc.total),700,330,'#fff');
         const from=G.score,to=from+sc.total,n=Math.min(14,Math.max(4,Math.round(sc.total/10)));let i=0;
-        const tk=()=>{i++;G.score=Math.round(from+(to-from)*i/n);const e=document.getElementById('rscore');if(e)e.textContent=fmt(G.score);sfx('tick',i+4);if(i<n)setTimeout(tk,45);else setTimeout(cb,350)};tk();},380);}
+        const tk=()=>{i++;G.score=Math.round(from+(to-from)*i/n);const e=document.getElementById('rscore');if(e)e.textContent=fmt(G.score);const bb=document.getElementById('rbar');if(bb)bb.style.width=Math.min(100,G.score/G.target*100)+'%';sfx('tick',i+4);if(i<n)setTimeout(tk,45);else setTimeout(cb,350)};tk();},380);}
   };
   setTimeout(stepFn,350);
 }
@@ -695,12 +785,12 @@ function sidebar(extra){
   const rv=UI.screen==='play'&&G;
   const tgt=rv?G.target:target(Math.min(R.idx,2));
   return `<div class="abs panel" style="left:12px;top:12px;width:270px;height:690px;padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px">
-  ${rv?`<div class="inset" style="background:${G.boss?'#FA49B0':R.idx===1?'#F7AB80':'#85C2D0'};color:${G.boss?'#fff':'#1a1315'};text-align:center"><div style="font-size:24px;font-weight:700">${G.boss?BOSSIC[R.twists[0]]+' ':''}${rivalName(R.idx)}</div>
+  ${rv?`<div class="inset" style="background:${G.boss?'#FA49B0':R.idx===1?'#F7AB80':'#85C2D0'};color:${G.boss?'#fff':'#1a1315'};text-align:center"><div style="font-size:24px;font-weight:700">${rivalName(R.idx)}</div>
    <div class="row" style="justify-content:center;margin-top:4px"><div class="small">Meta:</div><div class="big" style="font-size:30px">${fmt(G.target)}</div></div>
    <div class="small">Premio: ${'$'.repeat(REWARD[R.idx])}</div>${G.boss?G.tw.map(t=>`<div class="small">${TWD[t].d}</div>`).join(''):''}</div>
-  <div class="inset row" style="justify-content:space-between"><div class="lbl">Puntos de<br>ronda</div><div class="big" id="rscore">${fmt(G.score)}</div></div>
-  <div class="inset" style="text-align:center"><div class="lbl" style="margin-bottom:6px">${G.anim?'Baza ganada':'Puntos × Fuego'}</div><div class="row" style="justify-content:center;gap:6px"><div class="chips" id="aP">${G.anim?fmt(G.anim.p):0}</div><div style="font-size:26px;font-weight:700">×</div><div class="mult" id="aF">${G.anim?G.anim.f:0}</div></div></div>`
-  :`<div class="inset" style="text-align:center"><div style="font-size:26px;font-weight:700">${UI.screen==='tienda'?'🏪 La Tienda':'Pueblo '+R.town}</div><div class="small muted">${R.endless?'Modo Sin Fin':'Gana al Jefe para avanzar'}</div></div>`}
+  <div class="inset"><div class="row" style="justify-content:space-between"><div class="lbl">Tus puntos</div><div><span class="big" id="rscore">${fmt(G.score)}</span><span class="muted" style="font-size:20px"> / ${fmt(G.target)}</span></div></div><div class="bar"><div id="rbar" style="width:${Math.min(100,G.score/G.target*100)}%"></div></div></div>
+  <div class="inset" style="text-align:center"><div class="lbl" style="margin-bottom:6px">${G.anim?'Puntos de esta baza':G.lastSc?'Última baza ganada':'Puntos × Fuego'}</div><div class="row" style="justify-content:center;gap:6px"><div class="chips" id="aP">${G.anim?fmt(G.anim.p):G.lastSc?fmt(G.lastSc.p):0}</div><div style="font-size:26px;font-weight:700">×</div><div class="mult" id="aF">${G.anim?G.anim.f:G.lastSc?G.lastSc.f:0}</div></div><div class="small muted" style="margin-top:6px">${G.lastSc&&!G.anim?'= '+fmt(G.lastSc.t)+' puntos':'Gana bazas para sumar puntos'}</div></div>`
+  :`<div class="inset" style="text-align:center"><div style="font-size:26px;font-weight:700">${UI.screen==='tienda'?'La Tienda':'Pueblo '+R.town}</div><div class="small muted">${R.endless?'Modo Sin Fin':'Gana al Jefe para avanzar'}</div></div>`}
   <div class="row" style="gap:8px"><div class="inset" style="flex:1;text-align:center"><div class="lbl">Manos</div><div class="big" style="color:#85C2D0">${rv?G.manos:R.manos+(R.favs.includes('mano')?1:0)}</div></div><div class="inset" style="flex:1;text-align:center"><div class="lbl">Descartes</div><div class="big red">${rv?G.desc:Math.max(0,R.desc+(R.favs.includes('descarte')?1:0)-(R.coms.includes('borracho')?1:0))}</div></div></div>
   <div class="inset" style="text-align:center"><div class="big gold" style="font-size:40px">$${R.money}</div></div>
   <div class="row" style="gap:8px"><div class="inset" style="flex:1;text-align:center"><div class="lbl">Pueblo</div><div class="big" style="font-size:26px">${R.town}<span class="small muted">/8</span></div></div><div class="inset" style="flex:1;text-align:center"><div class="lbl">Rival</div><div class="big" style="font-size:26px">${Math.min(R.idx,2)+1}<span class="small muted">/3</span></div></div></div>
@@ -728,14 +818,14 @@ function rPlay(){
   h+=`<div class="abs" style="left:1140px;top:178px;text-align:center;width:120px"><div class="lbl">Triunfo</div><div style="margin:6px auto;width:80px">${hidden?cardHTML(null,{size:'mid'}):cardHTML(G.trumpCard,{size:'mid'})}</div><div style="font-weight:700;color:${hidden?'#ccc':SUITC[G.trump]}">${hidden?'???':SUITN[G.trump]}</div></div>`;
   h+=`<div class="abs" style="left:960px;top:330px;text-align:center;width:150px"><div class="lbl">Tu baraja</div><div style="margin:6px auto;width:50px">${cardHTML(null,{size:'small'})}</div><div class="small">${G.pd.length}/${R.deck.length}</div></div>`;
   h+=`<div class="abs" style="left:520px;top:172px;width:360px;text-align:center"><div class="row" style="justify-content:center;gap:40px">
-    <div><div class="lbl" style="margin-bottom:6px">Rival</div>${G.table.r?cardHTML(G.table.r,{cls:'flyd',tip:false}):'<div class="card" style="background:rgba(0,0,0,.25);box-shadow:none;border:2px dashed rgba(255,255,255,.2)"></div>'}</div>
-    <div><div class="lbl" style="margin-bottom:6px">Tú</div>${G.table.p?cardHTML(G.table.p,{cls:'fly',tip:false}):'<div class="card" style="background:rgba(0,0,0,.25);box-shadow:none;border:2px dashed rgba(255,255,255,.2)"></div>'}</div></div>
-    <div class="small muted" style="margin-top:8px">${G.table.r&&!G.table.p&&!G.busy?'El rival salió primero. Tu turno.':!G.busy?'Tú sales primero.':''}</div></div>`;
+    <div><div class="lbl" style="margin-bottom:6px">Rival</div>${G.table.r?cardHTML(G.table.r,{cls:G.result?(G.result==='r'?'lose':''):'flyd',tip:false}):'<div class="card" style="background:rgba(0,0,0,.25);box-shadow:none;border:2px dashed rgba(255,255,255,.2)"></div>'}</div>
+    <div><div class="lbl" style="margin-bottom:6px">Tú</div>${G.table.p?cardHTML(G.table.p,{cls:G.result?(G.result==='p'?'win':''):'fly',tip:false}):'<div class="card" style="background:rgba(0,0,0,.25);box-shadow:none;border:2px dashed rgba(255,255,255,.2)"></div>'}</div></div>
+    <div class="small muted" style="margin-top:8px">${G.busy?'':(G.table.r&&!G.table.p?'El rival salió primero. Tu turno.':'Tú sales primero.')+(G.busy?'':'<br>'+(G.sel.length===1?'Pulsa Jugar o toca la carta otra vez':'Toca una carta para elegirla'))}</div></div>`;
   const n=G.hand.length,w=Math.min(108,560/Math.max(1,n));
   h+=`<div class="abs row" style="left:300px;width:800px;top:440px;justify-content:center;gap:0">${G.hand.map((c,i)=>`<div style="width:${w}px;display:flex;justify-content:center">${cardHTML(c,{click:`selCard(${c.id})`,cls:'click '+(G.sel.includes(c.id)?'sel ':'')+(G.fresh[c.id]?'fly':''),tipUp:true})}</div>`).join('')}</div>`;
   const can=!G.busy&&!G.cash;
   h+=`<div class="abs row" style="left:300px;width:800px;top:664px;justify-content:center;gap:14px">
-   <div class="btn blue ${can&&G.sel.length===1?'':'off'}" onclick="playSel()">Jugar Carta</div>
+   <div class="btn blue ${can&&G.sel.length===1?'pulse':'off'}" onclick="playSel()">Jugar Carta</div>
    ${G.canSwap&&can?`<div class="btn orange" onclick="doSwap()">Cambiar por el Triunfo</div>`:''}
    <div class="btn ${can&&G.sel.length&&G.desc>0?'':'off'}" onclick="discardSel()">Descartar (${G.desc})</div></div>`;
   if(G.cash)h+=`<div class="modal"><div class="panel" style="width:460px;padding:22px;text-align:center"><div style="font-size:34px;font-weight:700;margin-bottom:12px">¡Rival vencido!</div>
@@ -750,7 +840,7 @@ function rSelect(){
     const cur=i===R.idx,done=i<R.idx,sk=R.skipped.includes(i),boss=i===2;
     const col=boss?'#FA49B0':i===1?'#F7AB80':'#85C2D0';
     h+=`<div class="panel rival ${cur?'cur':''} ${done?'done':''}">
-     <div class="chip" style="background:${col};color:${boss?'#fff':'#1a1315'}">${boss?`<span style="font-size:40px">${BOSSIC[R.twists[0]]}</span>`:RIVALN[i].split(' ')[1]}</div>
+     <div class="chip" style="background:${col};color:${boss?'#fff':'#1a1315'}">${boss?`${px(BOSSIC[R.twists[0]])}`:RIVALN[i].split(' ')[1]}</div>
      <div style="font-size:24px;font-weight:700">${rivalName(i)}</div>
      <div class="inset" style="width:100%;text-align:center;box-sizing:border-box"><div class="small">Consigue al menos</div><div class="big red">${fmt(target(i))}</div><div class="small gold">Premio: ${'$'.repeat(REWARD[i])}</div></div>
      ${boss?R.twists.map(t=>`<div class="small" style="color:#FA49B0;text-align:center">${TWD[t].d}</div>`).join(''):''}
@@ -764,12 +854,12 @@ function rTienda(){
   let h=sidebar(`<div class="btn green" onclick="leaveTienda()">Siguiente rival ▶</div>`)+topBar();
   const S=R.shop;
   h+=`<div class="abs panel" style="left:300px;top:176px;width:968px;height:526px;padding:16px 22px;box-sizing:border-box">
-   <div class="row" style="justify-content:space-between"><div style="font-size:34px;font-weight:700">🏪 La Tienda ${R.half?'<span class="small gold">(¡Todo a mitad de precio!)</span>':''}</div><div class="btn purple" onclick="reroll()">Cambiar artículos $${priceOf(S.reroll)}</div></div>
+   <div class="row" style="justify-content:space-between"><div style="font-size:34px;font-weight:700">La Tienda ${R.half?'<span class="small gold">(¡Todo a mitad de precio!)</span>':''}</div><div class="btn purple" onclick="reroll()">Cambiar artículos $${priceOf(S.reroll)}</div></div>
    <div class="row" style="gap:28px;margin-top:26px;align-items:flex-start">${S.items.map((it,i)=>`<div class="col" style="align-items:center">${it.sold?`<div class="tile" style="opacity:.25;background:#333"><div class="nm">Vendido</div></div>`:(it.t==='com'?comTile(it.id,{price:priceOf(COMD[it.id].p)}):refTile(it.id,{price:priceOf(3)}))}${it.sold?'':`<div class="btn blue sm" onclick="buy('items',${i})">Comprar</div>`}</div>`).join('')}</div>
    <div class="row" style="gap:28px;margin-top:34px;align-items:flex-start">
-    ${S.packs.map((it,i)=>{const p=PACKS[it.id];return `<div class="col" style="align-items:center">${it.sold?`<div class="tile" style="opacity:.25;background:#333"><div class="nm">Abierto</div></div>`:`<div class="tile tip pack"><div class="price">$${priceOf(p.p)}</div><div class="ic">${p.ic}</div><div class="nm">${p.n}</div><div class="tt up"><b>${p.n}</b>${p.d}</div></div><div class="btn blue sm" onclick="buy('packs',${i})">Abrir</div>`}</div>`}).join('')}
+    ${S.packs.map((it,i)=>{const p=PACKS[it.id];return `<div class="col" style="align-items:center">${it.sold?`<div class="tile" style="opacity:.25;background:#333"><div class="nm">Abierto</div></div>`:`<div class="tile tip pack"><div class="price">$${priceOf(p.p)}</div><div class="ic">${px(p.ic)}</div><div class="nm">${p.n}</div><div class="tt up"><b>${p.n}</b>${p.d}</div></div><div class="btn blue sm" onclick="buy('packs',${i})">Abrir</div>`}</div>`}).join('')}
     <div style="width:30px"></div>
-    ${R.favOffer?`<div class="col" style="align-items:center"><div class="tile tip fav"><div class="price">$${priceOf(10)}</div><div class="ic">${FAVD[R.favOffer].ic}</div><div class="nm">${FAVD[R.favOffer].n}</div><div class="tt up"><b>Favor: ${FAVD[R.favOffer].n}</b>${FAVD[R.favOffer].d}<br><i>Mejora permanente</i></div></div><div class="btn blue sm" onclick="buy('fav')">Comprar</div></div>`:''}
+    ${R.favOffer?`<div class="col" style="align-items:center"><div class="tile tip fav"><div class="price">$${priceOf(10)}</div><div class="ic">${px(FAVD[R.favOffer].ic)}</div><div class="nm">${FAVD[R.favOffer].n}</div><div class="tt up"><b>Favor: ${FAVD[R.favOffer].n}</b>${FAVD[R.favOffer].d}<br><i>Mejora permanente</i></div></div><div class="btn blue sm" onclick="buy('fav')">Comprar</div></div>`:''}
     <div class="col small muted" style="max-width:260px;margin-left:auto">Pasa el ratón sobre cualquier artículo para leerlo. Toca tus Comodines o Refranes de arriba para venderlos.</div>
    </div></div>`;
   return h;
@@ -781,7 +871,7 @@ function rModal(){
     return `<div class="modal" onclick="closeModal()"><div class="panel" style="width:1100px;padding:18px" onclick="event.stopPropagation()"><div class="row" style="justify-content:space-between"><div style="font-size:28px;font-weight:700">Tu baraja (${R.deck.length} cartas)</div><div class="btn" onclick="closeModal()">Cerrar</div></div>
     ${SUITS.map(s=>`<div class="row" style="gap:3px;margin-top:10px;flex-wrap:wrap"><div style="width:70px;color:${SUITC[s]};font-weight:700">${SUITN[s]}</div>${d.filter(c=>c.s===s).map(c=>cardHTML(c,{size:'tiny',tip:false})).join('')}</div>`).join('')}</div></div>`}
   if(m.t==='pack'){const p=PACKS[m.id];
-    return `<div class="modal"><div class="panel" style="padding:24px;text-align:center;min-width:560px"><div style="font-size:30px;font-weight:700">${p.ic} ${p.n}</div><div class="muted" style="margin:6px 0 24px">Elige 1</div>
+    return `<div class="modal"><div class="panel" style="padding:24px;text-align:center;min-width:560px"><div style="font-size:30px;font-weight:700">${p.n}</div><div class="muted" style="margin:6px 0 24px">Elige 1</div>
     <div class="row" style="justify-content:center;gap:30px">${m.ch.map((c,i)=>`<div class="col" style="align-items:center">${m.id==='sobreC'?comTile(c,{up:true}):m.id==='sobreR'?refTile(c,{up:true}):cardHTML(c,{tipUp:true})}<div class="btn blue sm" style="margin-top:8px" onclick="pickPack(${i})">Elegir</div></div>`).join('')}</div>
     <div class="btn gray" style="margin-top:22px" onclick="closeModal()">Saltar</div></div></div>`}
   if(m.t==='opts')return `<div class="modal"><div class="panel" style="padding:26px;width:520px">${optsBody()}<div class="row" style="justify-content:center;margin-top:22px;gap:14px"><div class="btn blue" onclick="closeModal()">Volver al juego</div><div class="btn" onclick="quitToTitle()">Salir al menú</div></div></div></div>`;
@@ -842,8 +932,8 @@ function optsBody(){
 function rOptions(){return `<div class="abs center" style="inset:0"><div class="panel" style="padding:26px;width:520px">${optsBody()}<div class="row" style="justify-content:center;margin-top:22px"><div class="btn blue" onclick="go('title')">Volver</div></div></div></div>`}
 function rColeccion(){
   const nC=COM.filter(c=>PROG.seen.includes(c.id)).length,nR=REF.filter(c=>PROG.seen.includes(c.id)).length;
-  const q=`<div class="tile" style="background:#3a3238;cursor:default"><div class="ic">❓</div><div class="nm">???</div></div>`;
-  return `<div class="abs center" style="inset:0"><div class="panel" style="width:1180px;padding:20px"><div class="row" style="justify-content:space-between"><div style="font-size:34px;font-weight:700">📖 Colección</div><div class="btn blue" onclick="go('title')">Volver</div></div>
+  const q=`<div class="tile" style="background:#3a3238;cursor:default"><div class="ic">${px("❓")}</div><div class="nm">???</div></div>`;
+  return `<div class="abs center" style="inset:0"><div class="panel" style="width:1180px;padding:20px"><div class="row" style="justify-content:space-between"><div style="font-size:34px;font-weight:700">Colección</div><div class="btn blue" onclick="go('title')">Volver</div></div>
   <div class="lbl" style="margin-top:12px">Comodines ${nC}/${COM.length}</div><div class="row" style="flex-wrap:wrap;gap:10px;margin-top:8px">${COM.map(c=>PROG.seen.includes(c.id)?comTile(c.id,{up:false}):q).join('')}</div>
   <div class="lbl" style="margin-top:16px">Refranes ${nR}/${REF.length}</div><div class="row" style="flex-wrap:wrap;gap:10px;margin-top:8px">${REF.map(c=>PROG.seen.includes(c.id)?refTile(c.id,{up:true}):q).join('')}</div></div></div>`;
 }
@@ -851,7 +941,7 @@ function rColeccion(){
 /* ---------- DUEL ---------- */
 let D=null,DV=null,NET={},localSeat=0,coverFor=-1,DMODE='local',lastShownScore=0;
 function rDuelMenu(){
-  return `<div class="abs center" style="inset:0"><div class="panel" style="width:640px;padding:28px;text-align:center"><div style="font-size:40px;font-weight:700">⚔️ Duelo</div>
+  return `<div class="abs center" style="inset:0"><div class="panel" style="width:640px;padding:28px;text-align:center"><div style="font-size:40px;font-weight:700">Duelo</div>
   <div class="muted" style="margin:10px 0 24px">Brisca de verdad, 1 contra 1. Cada jugador tiene sus Comodines. Gana la ronda quien haga más Puntos × Fuego. Primero en ganar 3 rondas gana el duelo.</div>
   <div class="col" style="align-items:center;gap:16px"><div class="btn orange lg" onclick="startLocalDuel()">En esta computadora</div><div class="btn blue lg" onclick="go('lobby')">En línea (con código)</div><div class="btn gray" onclick="go('title')">Volver</div></div></div></div>`;
 }
@@ -925,7 +1015,7 @@ function rDuel(){
     return `<div class="abs center" style="inset:0"><div class="panel" style="padding:34px 44px;text-align:center"><div style="font-size:22px" class="muted">Pasa la computadora a</div><div class="title" style="font-size:64px;margin:10px 0">Jugador ${coverFor+1}</div><div class="muted" style="margin-bottom:18px">El otro jugador no debe mirar.</div><div class="btn orange lg" onclick="uncover()">Ver mi mano</div></div></div>`;
   }
   let side=`<div class="abs panel" style="left:12px;top:12px;width:270px;height:690px;padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px">
-   <div class="inset" style="text-align:center"><div style="font-size:26px;font-weight:700">⚔️ Duelo</div><div class="small muted">Ronda ${v.round} · Primero a 3</div>${DMODE!=='local'&&NET.code?`<div class="small gold">Código: ${NET.code}</div>`:''}</div>
+   <div class="inset" style="text-align:center"><div style="font-size:26px;font-weight:700">Duelo</div><div class="small muted">Ronda ${v.round} · Primero a 3</div>${DMODE!=='local'&&NET.code?`<div class="small gold">Código: ${NET.code}</div>`:''}</div>
    <div class="inset"><div class="lbl">Rondas ganadas</div><div class="row" style="justify-content:space-between;font-size:22px;margin-top:4px"><span>${seatName(me)}</span><span class="gold">${'★'.repeat(v.wins[me])}${'☆'.repeat(3-v.wins[me])}</span></div><div class="row" style="justify-content:space-between;font-size:22px"><span>${seatName(op)}</span><span class="gold">${'★'.repeat(v.wins[op])}${'☆'.repeat(3-v.wins[op])}</span></div></div>
    <div class="inset"><div class="lbl">Puntos de ronda</div><div class="row" style="justify-content:space-between;margin-top:4px"><span>${seatName(me)}</span><span class="big" style="font-size:28px">${fmt(v.scores[me])}</span></div><div class="row" style="justify-content:space-between"><span>${seatName(op)}</span><span class="big" style="font-size:28px;color:#FA49B0">${fmt(v.scores[op])}</span></div></div>
    ${v.last?`<div class="inset" style="text-align:center"><div class="lbl">Última baza: ${seatName(v.last.seat)}</div><div class="row" style="justify-content:center;gap:6px;margin-top:6px"><div class="chips" style="font-size:22px;min-width:50px">${v.last.p}</div><b>×</b><div class="mult" style="font-size:22px;min-width:50px">${v.last.f}</div></div><div style="font-size:22px;margin-top:6px">= ${fmt(v.last.total)}${v.last.m?` <span class="gold">+$${v.last.m}</span>`:''}</div></div>`:''}
@@ -945,8 +1035,8 @@ function rDuel(){
    <div style="margin-top:10px;font-size:20px;font-weight:700" class="${v.turn===me?'gold':'muted'}">${v.phase==='resolve'?'...':v.turn===me?'¡Tu turno!':'Turno de '+seatName(op)}</div></div>`;
   const my=v.phase==='play'&&v.turn===me;
   h+=`<div class="abs row" style="left:300px;width:800px;top:440px;justify-content:center;gap:8px">${v.hands[me].map(c=>cardHTML(c,{click:my?`UI.dsel=${c.id};render()`:'',cls:(my?'click ':'')+(UI.dsel===c.id&&my?'sel':''),tipUp:true})).join('')}</div>
-   <div class="abs row" style="left:300px;width:800px;top:664px;justify-content:center;gap:14px"><div class="btn blue ${my&&v.hands[me].some(c=>c.id===UI.dsel)?'':'off'}" onclick="duelDo({t:'play',id:UI.dsel});UI.dsel=null">Jugar Carta</div>${v.canSwap===me&&my?`<div class="btn orange" onclick="duelDo({t:'swap'})">Cambiar por el Triunfo</div>`:''}</div>`;
-  if(v.last&&v.last.id!==lastShownScore){lastShownScore=v.last.id;setTimeout(()=>{floatText(seatName(v.last.seat)+' +'+fmt(v.last.total),700,330,v.last.seat===me?'#fff':'#FA49B0');sfx(v.last.seat===me?'tick':'card',8);(v.last.steps||[]).forEach((id,k)=>{if(v.last.seat===me)setTimeout(()=>{const e=document.getElementById('com-'+id);if(e){e.classList.remove('jig');void e.offsetWidth;e.classList.add('jig')}},150*k)})},50)}
+   <div class="abs row" style="left:300px;width:800px;top:664px;justify-content:center;gap:14px"><div class="btn blue ${my&&v.hands[me].some(c=>c.id===UI.dsel)?'pulse':'off'}" onclick="duelDo({t:'play',id:UI.dsel});UI.dsel=null">Jugar Carta</div>${v.canSwap===me&&my?`<div class="btn orange" onclick="duelDo({t:'swap'})">Cambiar por el Triunfo</div>`:''}</div>`;
+  if(v.last&&v.last.id!==lastShownScore){lastShownScore=v.last.id;setTimeout(()=>{banner(v.last.seat===me&&DMODE!=='local'?'¡Ganaste la baza!':seatName(v.last.seat)+' gana la baza','+'+fmt(v.last.total)+' puntos',v.last.seat===me||DMODE==='local'?'#85C2D0':'#FA49B0',v.last.seat===me||DMODE==='local'?'#1a1315':'#fff');sfx(v.last.seat===me?'tick':'card',8);(v.last.steps||[]).forEach((id,k)=>{if(v.last.seat===me)setTimeout(()=>{const e=document.getElementById('com-'+id);if(e){e.classList.remove('jig');void e.offsetWidth;e.classList.add('jig')}},150*k)})},50)}
   return h;
 }
 function duelShop(v,me,op,P){
@@ -956,14 +1046,14 @@ function duelShop(v,me,op,P){
     if(NET.peer&&!NET.closing){NET.closing=true;setTimeout(()=>{try{NET.peer.destroy()}catch(e){}},4000)}
     return `<div class="abs center" style="left:300px;top:176px;width:968px;height:526px"><div class="panel" style="padding:30px;text-align:center;width:560px"><div class="title" style="font-size:56px">${DMODE==='local'?'¡Gana el Jugador '+(w+1)+'!':(w===me?'¡Ganaste el duelo!':'Perdiste el duelo')}</div><div class="muted" style="margin:12px 0">Rondas: ${v.wins[me]} – ${v.wins[op]}${DMODE!=='local'?' · El código ya expiró':''}</div><div class="btn orange lg" onclick="quitToTitle()">Volver al menú</div></div></div>`}
   return `<div class="abs panel" style="left:300px;top:176px;width:968px;height:526px;padding:16px 22px;box-sizing:border-box">
-   <div class="row" style="justify-content:space-between"><div><div style="font-size:30px;font-weight:700">🏪 La Tienda</div><div class="muted">Ronda ${inf.round}: ${res} (${fmt(inf.scores[me])} a ${fmt(inf.scores[op])})</div></div><div class="btn purple" onclick="duelDo({t:'reroll'})">Cambiar $${P.reroll}</div></div>
+   <div class="row" style="justify-content:space-between"><div><div style="font-size:30px;font-weight:700">La Tienda</div><div class="muted">Ronda ${inf.round}: ${res} (${fmt(inf.scores[me])} a ${fmt(inf.scores[op])})</div></div><div class="btn purple" onclick="duelDo({t:'reroll'})">Cambiar $${P.reroll}</div></div>
    <div class="row" style="gap:30px;margin-top:30px">${P.shop.map((it,i)=>`<div class="col" style="align-items:center">${it.sold?`<div class="tile" style="opacity:.25;background:#333"><div class="nm">Vendido</div></div>`:comTile(it.id,{price:COMD[it.id].p})}${it.sold?'':`<div class="btn blue sm" onclick="duelDo({t:'buy',i:${i}})">Comprar</div>`}</div>`).join('')}</div>
    <div class="lbl" style="margin-top:26px">Vender tus Comodines</div><div class="row" style="gap:10px;margin-top:6px">${P.coms.map((id,i)=>`<div class="btn green sm" onclick="duelDo({t:'sell',i:${i}})">${COMD[id].ic} ${COMD[id].n} $${Math.max(1,Math.floor(COMD[id].p/2))}</div>`).join('')||'<span class="small muted">Nada que vender</span>'}</div>
    <div class="row" style="position:absolute;bottom:20px;right:22px;gap:14px">${P.ready?`<div class="muted" style="font-size:20px">Esperando a ${seatName(op)}...</div>`:`<div class="btn green lg" onclick="duelDo({t:'ready'})">¡Listo! ▶</div>`}</div></div>`;
 }
 /* online */
 function rLobby(){
-  return `<div class="abs center" style="inset:0"><div class="panel" style="width:660px;padding:28px;text-align:center"><div style="font-size:38px;font-weight:700">🌐 Duelo en línea</div>
+  return `<div class="abs center" style="inset:0"><div class="panel" style="width:660px;padding:28px;text-align:center"><div style="font-size:38px;font-weight:700">Duelo en línea</div>
    <div class="muted" style="margin:8px 0 22px">Cada jugador en su propia computadora. El código solo sirve para este duelo y expira al terminar.</div>
    ${NET.code?`<div class="lbl">Tu código</div><div class="title" style="font-size:58px;animation:none;margin:6px 0">${NET.code}</div><div class="muted">Dale este código a tu rival. ${NET.status||''}</div><div class="btn gray" style="margin-top:20px" onclick="quitToTitle()">Cancelar</div>`
    :`<div class="btn orange lg" onclick="hostOnline()">Crear partida</div>
